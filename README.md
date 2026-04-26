@@ -4,7 +4,7 @@
 
 Most behavioral HIDS in the literature assume the learning window is free of adversary activity. Real attacker dwell time is not zero (Mandiant M-Trends 2025 puts the 2024 global median at 11 days), so a detector that turns on while the adversary is already on the host fits a baseline shaped by the attack. ChronosynD's contribution, **Sediment**, is a poisoning-resistant baseline estimator that stays robust where the standard naive Gaussian baseline collapses.
 
-Validated on captured Linux bash behavior under three poisoning attacks: **126× median score separation, zero false positives during attack capture.**
+Validated on captured Linux bash behavior under three poisoning attacks: **126x median score separation, zero false positives during attack capture.**
 
 **Read the paper:** [`paper.pdf`](paper.pdf)
 
