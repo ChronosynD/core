@@ -19,7 +19,7 @@ authors = ["ChronosynD contributors"]
 rust-version = "1.75"
 
 [workspace.dependencies]
-ndarray = "0.16"
+ndarray = "0.17"
 statrs = "0.18"
 thiserror = "2"
 serde = { version = "1", features = ["derive"] }
