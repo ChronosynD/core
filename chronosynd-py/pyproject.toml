@@ -45,7 +45,7 @@ viz = [
 notebook = [
   "jupyterlab>=4.2,<5.0",
   "matplotlib>=3.9,<4.0",
-  "pandas>=2.2,<3.0",
+  "pandas>=2.2,<4.0",
   "seaborn>=0.13,<1.0",
 ]
 
