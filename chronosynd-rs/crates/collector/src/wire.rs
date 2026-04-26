@@ -3,13 +3,21 @@
 //! enum and stays forward-compatible with new kind codes
 
 use std::fs::{File, OpenOptions};
-use std::io::{BufRead, BufReader, BufWriter, Write};
+use std::io::{BufRead, BufReader, BufWriter, Read, Write};
 use std::path::Path;
 
 use anyhow::{Context, Result};
 use serde::{Deserialize, Serialize};
 
 use crate::event::{Event, EventKind};
+
+/// Maximum byte length accepted for a single JSONL record on read, picked
+/// generously above any realistic event (`comm` is 16 bytes from the kernel,
+/// `arg0` is 64 bytes, the JSON envelope is small) so legitimate streams are
+/// never rejected, an oversize line indicates a corrupt or malicious file
+/// rather than real ChronosynD output, the cap also prevents a single
+/// pathological line from forcing an unbounded allocation on read
+const MAX_RECORDING_LINE_BYTES: usize = 64 * 1024;
 
 /// Plain-data on-disk representation of one captured event, kind is stored
 /// as the raw kernel code so unknown future codes round-trip cleanly
@@ -138,12 +146,13 @@ where
 {
     let file = File::open(path)
         .with_context(|| format!("opening recording file {}", path.display()))?;
-    let reader = BufReader::new(file);
+    let mut reader = BufReader::new(file);
     let mut events: Vec<Event> = Vec::new();
     let mut pending_failure: Option<(usize, String)> = None;
-    for (line_idx, line_result) in reader.lines().enumerate() {
-        let line = line_result
-            .with_context(|| format!("reading line {} of {}", line_idx + 1, path.display()))?;
+    let mut line_idx: usize = 0;
+    while let Some(line) = read_capped_line(&mut reader, MAX_RECORDING_LINE_BYTES)
+        .with_context(|| format!("reading line {} of {}", line_idx + 1, path.display()))?
+    {
         if let Some((prev_idx, prev_line)) = pending_failure.take() {
             let err = serde_json::from_str::<WireEvent>(&prev_line)
                 .err()
@@ -157,6 +166,7 @@ where
             ));
         }
         if line.trim().is_empty() {
+            line_idx += 1;
             continue;
         }
         match serde_json::from_str::<WireEvent>(&line) {
@@ -170,6 +180,37 @@ where
                 pending_failure = Some((line_idx, line));
             }
         }
+        line_idx += 1;
     }
     Ok(events)
+}
+
+/// Read up to one newline-terminated line, refusing any line whose byte
+/// length exceeds `max_bytes`. Returns `Ok(None)` at clean EOF, `Ok(Some(s))`
+/// for a line within the cap (trailing `\r?\n` stripped), and `Err` on I/O
+/// failure or cap violation. Never allocates more than `max_bytes + 1` bytes
+fn read_capped_line<R: BufRead>(reader: &mut R, max_bytes: usize) -> Result<Option<String>> {
+    let limit = (max_bytes as u64).saturating_add(1);
+    let mut buf: Vec<u8> = Vec::new();
+    let mut limited = reader.take(limit);
+    let read = limited
+        .read_until(b'\n', &mut buf)
+        .context("reading recording line")?;
+    if read == 0 {
+        return Ok(None);
+    }
+    if buf.len() > max_bytes {
+        return Err(anyhow::anyhow!(
+            "recording line exceeds {max_bytes} byte cap, refusing to allocate further"
+        ));
+    }
+    if buf.last() == Some(&b'\n') {
+        buf.pop();
+        if buf.last() == Some(&b'\r') {
+            buf.pop();
+        }
+    }
+    let line = String::from_utf8(buf)
+        .map_err(|err| anyhow::anyhow!("recording line is not valid UTF-8: {err}"))?;
+    Ok(Some(line))
 }

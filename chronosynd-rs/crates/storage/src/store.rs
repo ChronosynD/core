@@ -199,14 +199,35 @@ fn decode_baseline_row(row: &rusqlite::Row<'_>) -> Result<StoredBaseline> {
     let fitted_at_ns: i64 = row.get(5)?;
     let sample_count: i64 = row.get(6)?;
 
+    let feature_dim = nonnegative_usize("feature_dim", feature_dim)?;
+    let fitted_at_ns = nonnegative_u64("fitted_at_ns", fitted_at_ns)?;
+    let sample_count = nonnegative_u64("sample_count", sample_count)?;
+
+    let mean: Vec<f64> = serde_json::from_str(&mean_json)?;
+    let std: Vec<f64> = serde_json::from_str(&std_json)?;
+    if mean.len() != feature_dim {
+        return Err(StorageError::CorruptRow(format!(
+            "mean length {} disagrees with feature_dim {} for {process_key}",
+            mean.len(),
+            feature_dim,
+        )));
+    }
+    if std.len() != feature_dim {
+        return Err(StorageError::CorruptRow(format!(
+            "std length {} disagrees with feature_dim {} for {process_key}",
+            std.len(),
+            feature_dim,
+        )));
+    }
+
     Ok(StoredBaseline {
         process_key,
-        feature_dim: feature_dim as usize,
-        mean: serde_json::from_str(&mean_json)?,
-        std: serde_json::from_str(&std_json)?,
+        feature_dim,
+        mean,
+        std,
         estimator_kind,
-        fitted_at_ns: fitted_at_ns as u64,
-        sample_count: sample_count as u64,
+        fitted_at_ns,
+        sample_count,
     })
 }
 
@@ -215,10 +236,37 @@ fn decode_window_row(row: &rusqlite::Row<'_>) -> Result<MaintenanceWindow> {
     let start_ns: i64 = row.get(1)?;
     let end_ns: Option<i64> = row.get(2)?;
     let note: Option<String> = row.get(3)?;
+    let start_ns = nonnegative_u64("start_ns", start_ns)?;
+    let end_ns = match end_ns {
+        Some(value) => Some(nonnegative_u64("end_ns", value)?),
+        None => None,
+    };
     Ok(MaintenanceWindow {
         id,
-        start_ns: start_ns as u64,
-        end_ns: end_ns.map(|v| v as u64),
+        start_ns,
+        end_ns,
         note,
+    })
+}
+
+fn nonnegative_u64(field: &str, value: i64) -> Result<u64> {
+    if value < 0 {
+        return Err(StorageError::CorruptRow(format!(
+            "{field} is negative: {value}"
+        )));
+    }
+    Ok(value as u64)
+}
+
+fn nonnegative_usize(field: &str, value: i64) -> Result<usize> {
+    if value < 0 {
+        return Err(StorageError::CorruptRow(format!(
+            "{field} is negative: {value}"
+        )));
+    }
+    // i64 fits in usize on 64-bit targets, on 32-bit a positive i64 might not,
+    // surface that explicitly rather than truncating
+    usize::try_from(value).map_err(|_| {
+        StorageError::CorruptRow(format!("{field} exceeds usize range: {value}"))
     })
 }

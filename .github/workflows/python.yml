@@ -1,5 +1,8 @@
 name: python
 
+permissions:
+  contents: read
+
 on:
   push:
     branches: [main]
@@ -30,8 +33,10 @@ jobs:
       - name: Set up Python
         run: uv python install ${{ matrix.python-version }}
       - name: Install
-        run: uv sync --extra dev
-      - name: Ruff (once deps are pinned)
-        run: echo "ruff check placeholder, enable once dev deps are pinned"
-      - name: Pytest (once deps are pinned)
-        run: echo "pytest placeholder, enable once dev deps are pinned"
+        run: uv sync --extra dev --extra viz
+      - name: Ruff
+        run: uv run ruff check .
+      - name: Mypy
+        run: uv run mypy
+      - name: Pytest
+        run: uv run pytest

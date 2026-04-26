@@ -2,6 +2,9 @@ name: parity
 
 # Cross-implementation parity check, fails the build if Python and Rust outputs diverge
 
+permissions:
+  contents: read
+
 on:
   push:
     branches: [main]
@@ -12,7 +15,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6
-      - uses: dtolnay/rust-toolchain@stable
+      - uses: dtolnay/rust-toolchain@29eef336d9b2848a0b548edc03f92a220660cdb8 # stable @ 2026-04-26
       - uses: astral-sh/setup-uv@v7
       - uses: Swatinem/rust-cache@v2
         with:

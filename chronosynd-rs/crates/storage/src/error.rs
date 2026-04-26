@@ -27,6 +27,12 @@ pub enum StorageError {
     /// A required record was not present in the store
     #[error("not found: {0}")]
     NotFound(String),
+
+    /// A row read from the database held a value outside its allowed domain
+    /// (negative width or count, oversized payload), the audit chain catches
+    /// deliberate tampering, this catches field-level corruption inside a row
+    #[error("corrupt row: {0}")]
+    CorruptRow(String),
 }
 
 /// Result alias used throughout the crate

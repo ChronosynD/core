@@ -157,10 +157,15 @@ def test_random_permutation_uses_provided_rng() -> None:
 
 def test_targeted_with_zero_trim_matches_target_injection() -> None:
     # When the defender does no trimming, the optimal placement is the
-    # target itself. The result should match what NaiveBaseline sees under
-    # any target-valued attack
+    # target itself. The poisoned NaiveBaseline must score the target as
+    # meaningfully less anomalous than a clean NaiveBaseline does, that is
+    # the whole point of the attack and what this test guards against
     benign = _benign_window(samples=200)
     target = np.full(benign.shape[1], 5.0)
+
+    clean_naive = NaiveBaseline()
+    clean_naive.fit(benign)
+    clean_target_score = clean_naive.score(target)
 
     result = inject_targeted(
         benign,
@@ -170,10 +175,15 @@ def test_targeted_with_zero_trim_matches_target_injection() -> None:
         rng=np.random.default_rng(seed=2),
     )
 
-    naive = NaiveBaseline()
-    naive.fit(result.observations)
-    target_score = naive.score(target)
-    assert target_score < 100.0
+    poisoned_naive = NaiveBaseline()
+    poisoned_naive.fit(result.observations)
+    poisoned_target_score = poisoned_naive.score(target)
+
+    # The clean baseline should score the target as far from the benign mean,
+    # otherwise this test is not exercising what it claims to
+    assert clean_target_score > 5.0
+    # The poisoning at 10% budget must drop the score by at least half
+    assert poisoned_target_score < clean_target_score / 2.0
 
 
 def test_rejects_invalid_budget() -> None:

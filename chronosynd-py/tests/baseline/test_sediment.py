@@ -193,6 +193,9 @@ def test_sediment_clean_fpr_comparable_to_naive() -> None:
     naive_score = naive.score(held_out)
     sediment_score = sediment.score(held_out)
 
+    # Naive must score a benign held-out point as non-trivial, otherwise the
+    # ratio comparison below is meaningless and the test would pass vacuously
+    assert naive_score > 1e-6
     # Scores on a typical benign observation must agree within a factor of two
-    ratio = sediment_score / naive_score if naive_score > 0 else 1.0
+    ratio = sediment_score / naive_score
     assert 0.5 < ratio < 2.0

@@ -5,10 +5,16 @@
 use rusqlite::{params, Connection, OptionalExtension};
 use sha2::{Digest, Sha256};
 
-use crate::error::Result;
+use crate::error::{Result, StorageError};
 
 /// Sentinel `prev_hash` for the very first audit row, all zeros
 pub(crate) const ANCHOR_HASH: [u8; 32] = [0; 32];
+
+/// Hard ceiling for the per-row audit payload, the audit log is the one place
+/// that must never grow without bound, a megabyte holds any realistic baseline
+/// JSON for the feature dims this project targets and gives a clear diagnostic
+/// error long before disk pressure
+pub(crate) const MAX_AUDIT_PAYLOAD_BYTES: usize = 1 << 20;
 
 /// Result of walking the audit log start to end and recomputing every hash
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -29,6 +35,12 @@ pub(crate) fn append(
     operation: &str,
     payload: &str,
 ) -> Result<i64> {
+    if payload.len() > MAX_AUDIT_PAYLOAD_BYTES {
+        return Err(StorageError::InvalidArgument(format!(
+            "audit payload for {operation} is {} bytes, exceeds {MAX_AUDIT_PAYLOAD_BYTES} byte cap",
+            payload.len(),
+        )));
+    }
     let prev_hash = latest_hash(conn)?;
     let next_seq = next_sequence(conn)?;
     let row_hash = compute_row_hash(next_seq, ts_ns, operation, payload, &prev_hash);
