@@ -1,0 +1,17 @@
+[package]
+name = "chronosynd-scoring"
+description = "Real-time drift scoring engine, consumes feature vectors, queries the baseline store, and emits alerts above threshold"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+chronosynd-baseline = { path = "../baseline" }
+chronosynd-features = { path = "../features" }
+chronosynd-storage = { path = "../storage" }
+thiserror = { workspace = true }

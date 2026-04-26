@@ -1,0 +1,99 @@
+% SPDX-License-Identifier: CC-BY-4.0
+\section{\sediment{}}
+\label{sec:sediment}
+
+\subsection{Algorithm}
+
+\sediment{} models each feature as an independent Gaussian under the
+clean null. The score on a new observation $x$ is the sum of squared
+standardized residuals,
+\begin{equation}
+  \score(x) = \sum_{j=1}^{d} \frac{(x_j - \mu_j)^2}{(\sigma_j + \epsilon)^2},
+  \label{eq:score}
+\end{equation}
+which is the Mahalanobis distance under a diagonal-covariance
+assumption. The estimator has two parameters: a trim fraction
+$\trim \in [0, 1)$ and a small $\epsilon > 0$ that floors the
+variance.
+
+For each feature $j$, given a learning window
+$\{x_1^{(j)}, \dots, x_N^{(j)}\}$ sorted ascending, the per-tail
+trim count is $k = \lfloor \trim N / 2 + 1/2 \rfloor$. The trimmed
+mean is the mean of the surviving $N - 2k$ samples,
+\begin{equation}
+  \mu_j = \frac{1}{N - 2k} \sum_{i=k+1}^{N-k} x_{(i)}^{(j)}.
+\end{equation}
+The trimmed standard deviation is the unbiased sample standard
+deviation of the surviving samples, multiplied by a closed-form
+Gaussian-truncation correction $c(\trim)$ derived below,
+\begin{equation}
+  \sigma_j = c(\trim) \cdot \sqrt{\frac{1}{N - 2k - 1}
+                       \sum_{i=k+1}^{N-k} (x_{(i)}^{(j)} - \mu_j)^2}.
+\end{equation}
+
+\subsection{Gaussian-truncation correction}
+
+For an $\mathcal{N}(0, s^2)$ sample symmetrically trimmed at
+$\trim/2$ per tail, the trimmed-sample variance underestimates $s^2$
+because the trimmed tails carried disproportionate variance. Let
+$\Phi^{-1}$ and $\phi$ denote the standard normal quantile and
+density functions. The trim cutoff is
+\begin{equation}
+  z = \Phi^{-1}\!\left(1 - \frac{\trim}{2}\right).
+\end{equation}
+The variance of an $\mathcal{N}(0, 1)$ variable conditioned on
+$|Z| \leq z$ is
+\begin{equation}
+  \mathrm{Var}(Z \mid |Z| \leq z) = 1 - \frac{2 z \phi(z)}{1 - \trim},
+  \label{eq:truncated-variance}
+\end{equation}
+so the multiplicative correction that recovers an unbiased estimate
+of $s$ from the trimmed sample standard deviation is
+\begin{equation}
+  c(\trim) = \frac{1}{\sqrt{1 - 2 z \phi(z) / (1 - \trim)}}.
+\end{equation}
+
+\subsection{Robustness guarantee}
+
+The classical breakdown point of the symmetric $\trim$-trimmed mean
+is $\trim/2$~\cite{huber1964robust}: an adversary controlling fewer
+than $\trim N / 2$ samples per feature cannot move the trimmed mean
+an arbitrary amount. We adopt this as our defender's contract.
+
+\begin{proposition}[\sediment{} robustness, informal]\label{prop:robust}
+Fix a per-feature trim fraction \trim{} and an adversary budget
+$\budget \leq \trim/2$. Let $\mu^{\circ}_j, \sigma^{\circ}_j$ denote
+the population mean and standard deviation of feature $j$ under the
+clean data-generating distribution, and let
+$\hat{\mu}_j, \hat{\sigma}_j$ denote the moments fitted by
+\sediment{} on a poisoned learning window of size $N$. Then for each
+feature $j$, $\hat{\mu}_j \to \mu^{\circ}_j$ and
+$\hat{\sigma}_j \to \sigma^{\circ}_j$ in probability as
+$N \to \infty$, regardless of the adversary's choice of poisoning
+placement.
+\end{proposition}
+
+The argument has two ingredients. First, the trimmed mean's
+breakdown point of $\trim/2$~\cite{huber1964robust} bounds the
+influence of any $\budget N$ adversarial samples on $\hat{\mu}_j$
+when $\budget \leq \trim/2$, because the adversarial samples cannot
+all sit in the surviving region simultaneously. Second, the
+closed-form correction $c(\trim)$ restores the trimmed standard
+deviation to an unbiased estimate of $\sigma^{\circ}_j$ on the
+surviving $(1 - \trim) N$ benign samples.
+
+The bound is tight in the worst case. At $\budget = \trim/2$, an
+adversary can in principle place every adversarial sample at the
+defender's trim boundary, surviving the trim and dragging
+$\hat{\mu}_j$. \cref{sec:eval-white-box} reports a grid-search
+white-box adversary that attempts exactly this. Empirically the
+optimum reduces to the at-target injection, which gives evidence
+that the worst case is hard to construct in practice. We return to
+residual risks in \cref{sec:discussion}.
+
+\subsection{Complexity}
+
+Per feature, fitting requires sorting the $N$ samples
+($\mathcal{O}(N \log N)$) and computing the trimmed moments
+($\mathcal{O}(N)$). Memory is $\mathcal{O}(d)$ for the fitted
+moments per process. Scoring is $\mathcal{O}(d)$ per observation.

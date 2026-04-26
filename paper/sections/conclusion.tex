@@ -1,0 +1,26 @@
+% SPDX-License-Identifier: CC-BY-4.0
+\section{Conclusion}
+\label{sec:conclusion}
+
+Behavioral host intrusion detection systems all rest on an
+assumption about their learning window that real-world adversary
+dwell times invalidate. We formalized the resulting baseline-poisoning
+threat model, demonstrated that the naive estimators in widespread
+use collapse under modest poisoning budgets, proposed \sediment{} as
+a per-feature trimmed-moment estimator with a closed-form
+Gaussian-truncation bias correction, and evaluated it across nine
+experiments including a white-box adversary that knows the
+defender's hyperparameters. \sediment{} provides a defensible
+robustness guarantee at a transparent operational cost: a small but
+quantifiable bump in clean-condition false-positive rate when the
+benign distribution leaves the Gaussian null, and effectively zero
+cost when it does not. The white-box experiment gives evidence the
+obvious attack class does not improve on the budget-bounded
+black-box adversary the construction was designed against.
+
+The artifact is open source. The evaluation regenerates from a
+single command. The Python reference and Rust production
+implementations are bit-equivalent through a CI-enforced
+cross-implementation parity check. We hope the threat model and
+evaluation harness are useful to others building behavioral
+detectors at any layer of the stack.

@@ -1,0 +1,91 @@
+% SPDX-License-Identifier: CC-BY-4.0
+% Copyright 2026 The ChronosynD Authors, see LICENSE-CC-BY-4.0
+
+\documentclass[10pt,letterpaper]{article}
+
+% core packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+% figure search path
+\graphicspath{{figures/}}
+
+% bibliography
+\usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
+\addbibresource{references.bib}
+
+% theorem-like environments
+\newtheorem{proposition}{Proposition}
+
+% macros
+\newcommand{\sediment}{\textsc{Sediment}}
+\newcommand{\chronosynd}{\textsc{ChronosynD}}
+\newcommand{\trim}{\ensuremath{\tau}} % trim fraction
+\newcommand{\budget}{\ensuremath{\beta}} % adversary budget
+\newcommand{\target}{\ensuremath{m^{*}}} % target attack behavior
+\newcommand{\score}{\ensuremath{s}} % drift score
+\newcommand{\threshold}{\ensuremath{\theta}} % detection threshold
+\newcommand{\todo}[1]{{\color{red}\textbf{TODO}: #1}}
+
+% title block
+\title{\sediment{}: Poisoning-Resistant Behavioral Baselines\\for Host Intrusion Detection}
+\author{Vurmusum%
+  \thanks{Independent. Email: \texttt{vurmusum@gmail.com}.}}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Behavioral host intrusion detection systems learn a per-process
+baseline from a window of observations and score live behavior as
+drift against the baseline. Every such system rests on an implicit
+assumption that the learning window is free of adversary activity.
+In practice attacker dwell time is nonzero by definition, and a
+detector that turns on while the adversary is already on the host
+fits a baseline shaped by the adversary. We call this \emph{baseline
+poisoning}. We formalize the threat model with an adversary budget
+$\budget \in [0, 1]$ that bounds the fraction of the window the
+adversary controls, propose \sediment{}, a per-feature trimmed-moment
+estimator with a closed-form Gaussian-truncation bias correction and
+a single trim-fraction knob \trim{} that gives defensible resistance
+up to $\budget = \trim{}/2$, and evaluate across nine experiments.
+Under uniform poisoning at $\budget = 0.15$ on an isotropic synthetic
+workload, the naive mean-and-stddev estimator loses roughly a factor
+of 3.6 in target-score discriminability while \sediment{} at
+$\trim{} = 0.30$ holds. Under a grid-search white-box adversary with
+full knowledge of \trim{}, the optimal placement reduces to the
+at-target injection, which gives evidence that white-box knowledge
+does not yield a stronger attack against symmetric-trim defenders.
+On a real captured trace of Linux \texttt{bash} activity, \sediment{}
+detects an attack-payload run with a 126$\times$ median score
+separation over clean windows and zero false positives during the
+attack capture period. A reference Python implementation and a
+production Rust runtime stay bit-equivalent through
+cross-implementation parity tests on every push.
+\end{abstract}
+
+\input{sections/intro}
+\input{sections/background}
+\input{sections/threat_model}
+\input{sections/system}
+\input{sections/sediment}
+\input{sections/evaluation}
+\input{sections/discussion}
+\input{sections/limitations}
+\input{sections/conclusion}
+
+\printbibliography
+
+\end{document}

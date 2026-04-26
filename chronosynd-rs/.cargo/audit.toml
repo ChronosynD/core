@@ -1,0 +1,8 @@
+# cargo-audit configuration. Listed advisories are explicitly acknowledged
+# and suppressed so the audit run surfaces actual CVEs only. Re-evaluate
+# each entry whenever the upstream chain updates.
+
+[advisories]
+ignore = [
+    "RUSTSEC-2024-0436",
+]

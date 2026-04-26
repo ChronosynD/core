@@ -1,0 +1,45 @@
+% SPDX-License-Identifier: CC-BY-4.0
+\section{Threat model}
+\label{sec:threat-model}
+
+\paragraph{Setting.} A behavioral HIDS observes a per-process feature
+stream and fits a baseline from $N$ benign-window observations
+$X = \{x_1, \dots, x_N\} \subset \mathbb{R}^d$. After fitting, it
+scores live observations against the fitted baseline and raises an
+alert when the score exceeds a threshold $\threshold$.
+
+\paragraph{Adversary capability.} The adversary controls a fraction
+$\budget \in [0, 1]$ of the learning window. They may inject up to
+$|A| = \lfloor \budget N \rfloor$ observations of their choosing,
+giving the defender $X' = (X \setminus B) \cup A$ where $B$ is some
+discarded subset of the original benign observations.
+
+\paragraph{Adversary goal.} Given a target attack behavior
+$\target \in \mathbb{R}^d$ representing the post-learning malicious
+action the adversary intends to perform, the adversary picks $A$ to
+minimize the score $\score(\target)$ assigned by the baseline fitted
+on $X'$. The adversary wins if $\score(\target) < \threshold$.
+
+\paragraph{Observability.} We consider three variants:
+\begin{description}
+\item[Black-box] The adversary knows there is a baseline-fitting step
+  but not the algorithm or hyperparameters. Realized by
+  \texttt{inject\_pre\_seed}.
+\item[Grey-box] The adversary knows the algorithm family but not the
+  exact hyperparameters. Treated as a special case of white-box for
+  evaluation.
+\item[White-box] The adversary knows the algorithm and all
+  hyperparameters, including \trim{}. Realized by
+  \texttt{inject\_targeted}, which grid-searches the per-feature
+  injection placement that minimizes $\score(\target)$ after a fresh
+  fit.
+\end{description}
+
+\paragraph{Out of scope.} Kernel-level compromise that lets the
+adversary forge process identity (PID, UID, cgroup) or backdoor the
+BPF runtime is out of scope. The threat model assumes the kernel-side
+identity surface is trustworthy. Post-fit tampering with the
+persisted baseline store is a separate concern, addressed in the
+runtime by a SHA-256 hash chain over an append-only audit log
+(\cref{sec:system}). It is orthogonal to the algorithmic
+contribution of this paper.

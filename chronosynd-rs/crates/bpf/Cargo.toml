@@ -1,0 +1,16 @@
+[package]
+name = "chronosynd-bpf"
+description = "In-kernel BPF programs written in restricted C, compiled and re-exported as Rust byte-slice constants"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+build = "build.rs"
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+
+[build-dependencies]

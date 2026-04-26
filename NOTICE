@@ -1,0 +1,84 @@
+ChronosynD
+==========
+
+Copyright 2026 The ChronosynD Authors
+
+This project is distributed under a dual-license structure following the
+standard academic open-source convention:
+
+  * Source code (everything that is compiled, executed, or imported as
+    a dependency, including the Python and Rust implementations of the
+    Sediment estimator) is licensed under the Apache License, Version
+    2.0. See the LICENSE file at the repository root for the full text.
+
+  * Written materials are licensed under the Creative Commons
+    Attribution 4.0 International License (CC-BY-4.0). This includes
+    the paper and any LaTeX sources, all PDF figures under
+    paper/figures/, the formal documentation under docs/ (including the
+    threat model and evaluation protocol), every README, the
+    CITATION.cff and NOTICE files, and the algorithm descriptions
+    themselves (the mathematical formulation of Sediment, the
+    bias-correction derivation, and the formal threat model). See the
+    LICENSE-CC-BY-4.0 file at the repository root for the full text.
+
+The exact mapping of files to licenses is documented in the "License"
+section of the top-level README.
+
+--------------------------------------------------------------------------
+Apache License attribution
+--------------------------------------------------------------------------
+
+This product includes software developed by The ChronosynD Authors
+(https://github.com/ChronosynD/core).
+
+If you redistribute this work in source or binary form, you must include
+a copy of this NOTICE file and the LICENSE file with the redistribution,
+as required by the Apache License, Version 2.0 (Section 4).
+
+--------------------------------------------------------------------------
+CC-BY-4.0 attribution
+--------------------------------------------------------------------------
+
+When citing or reusing the written materials covered by CC-BY-4.0, the
+required attribution is:
+
+    Vurmusum and the ChronosynD contributors.
+    "ChronosynD: Poisoning-Resistant Behavioral Baselines for Host
+     Intrusion Detection."
+    https://github.com/ChronosynD/core
+
+Citing the formal academic reference defined in CITATION.cff is also
+acceptable and is preferred when citing the research contribution rather
+than this repository as an artifact.
+
+--------------------------------------------------------------------------
+Non-affiliation statement
+--------------------------------------------------------------------------
+
+ChronosynD is an independent open-source project. It is not affiliated
+with, endorsed by, sponsored by, certified by, or otherwise associated
+with any university, corporation, government agency, foundation, or
+other institution. References to such entities anywhere in this project
+are made only for identification, comparison, or attribution purposes.
+
+All trademarks, service marks, product names, and registered marks
+mentioned in this project remain the property of their respective
+owners. Their inclusion does not imply endorsement of ChronosynD by
+those owners or of those owners by ChronosynD.
+
+--------------------------------------------------------------------------
+Third-party components
+--------------------------------------------------------------------------
+
+This repository includes a generated kernel BTF header at
+chronosynd-rs/crates/bpf/bpf/vmlinux.h, produced from a running Linux
+kernel via "bpftool btf dump". That file consists solely of struct and
+type definitions extracted from the kernel's BTF metadata. It is
+included for the BPF program to compile against current kernel ABIs
+and is not relicensed by ChronosynD; downstream users who redistribute
+this header should consult their own legal counsel about kernel-derived
+header reuse if they have any doubt.
+
+All other third-party dependencies are pulled in at build time via
+Cargo and uv, and their licenses apply at the points where they are
+linked or imported.

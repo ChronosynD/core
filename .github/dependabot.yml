@@ -1,0 +1,53 @@
+# Dependabot version updates for ChronosynD. Tracks the three ecosystems
+# in the repo, opens PRs weekly so they batch into one review session
+# instead of dripping in daily.
+
+version: 2
+updates:
+  # Python dependencies declared in chronosynd-py/pyproject.toml, also
+  # picked up by uv.lock so the lock stays consistent with the manifest
+  - package-ecosystem: "pip"
+    directory: "/chronosynd-py"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "python"
+    groups:
+      python-minor-and-patch:
+        applies-to: version-updates
+        update-types:
+          - "minor"
+          - "patch"
+
+  # Rust workspace dependencies, all seven crates feed up through the
+  # workspace Cargo.toml so dependabot only needs the root path
+  - package-ecosystem: "cargo"
+    directory: "/chronosynd-rs"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "rust"
+    groups:
+      rust-minor-and-patch:
+        applies-to: version-updates
+        update-types:
+          - "minor"
+          - "patch"
+
+  # GitHub Actions versions used in workflows, the third-party actions
+  # are pinned by tag so dependabot bumps them when upstream cuts a release
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "ci"

@@ -1,0 +1,4089 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "name": "default_w16_n200",
+      "window_size": 16,
+      "vocab": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        9,
+        10,
+        11,
+        21,
+        41,
+        42,
+        43,
+        44,
+        45,
+        47,
+        56,
+        57,
+        59,
+        60,
+        62,
+        87,
+        90,
+        92,
+        232,
+        257
+      ],
+      "events": [
+        {
+          "process_key": "nginx",
+          "syscall_nr": 56
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10003
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 4
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10003
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 41
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 44
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 9999
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 44
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 57
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 0
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 232
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 57
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 41
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 257
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 21
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 45
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 4
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 44
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 9
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 11
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 232
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 21
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 47
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10004
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10004
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 92
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 57
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 11
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 5
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10004
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 56
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 3
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 62
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 257
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 60
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10002
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 1
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 57
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 45
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 2
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 62
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10001
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 60
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 11
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 9999
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 56
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 56
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 232
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 4
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 9999
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 90
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 257
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 9
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 9999
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 9
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 2
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10001
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10001
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10001
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 47
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 11
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 0
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 62
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 92
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 9999
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 21
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 9
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 62
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 9999
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10004
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 4
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 47
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10002
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 44
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 60
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 0
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 87
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10002
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 9999
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10002
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 87
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 232
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 9
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 9999
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 2
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 9999
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 5
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 43
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 41
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 90
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 5
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 43
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 0
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 11
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 44
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 3
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 62
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 43
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 92
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 87
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 45
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10001
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 62
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 9999
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 42
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 57
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 9
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10004
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 11
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 2
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 11
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 232
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 90
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 4
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 43
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 44
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 87
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 45
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 60
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 9999
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 92
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 42
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 45
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 42
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 3
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 9
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 21
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 41
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 41
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 59
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10004
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 257
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 257
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 232
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 60
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10002
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 90
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 56
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 2
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 47
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 9
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 4
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 56
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 257
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 21
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 232
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 57
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 4
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10004
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 44
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 21
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10001
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 4
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 92
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 9
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 43
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10001
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 43
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10004
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 62
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 90
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 56
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 41
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 43
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10003
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 9
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10004
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 232
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 42
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 62
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 43
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 43
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 56
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 0
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 56
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10004
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 21
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 232
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 45
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 9
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10002
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 0
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 21
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10004
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 11
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10001
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 60
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 9999
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 62
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 42
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 232
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 0
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 45
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 43
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 47
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 4
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10
+        }
+      ],
+      "emissions": [
+        {
+          "event_index": 39,
+          "process_key": "sshd",
+          "feature_vector": [
+            0.0,
+            0.0625,
+            0.0625,
+            0.0625,
+            0.0625,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0625,
+            0.0625,
+            0.0,
+            0.0,
+            0.0625,
+            0.0,
+            0.0,
+            0.0625,
+            0.0,
+            0.0,
+            0.0625,
+            0.0625,
+            0.0625,
+            0.3125
+          ]
+        },
+        {
+          "event_index": 48,
+          "process_key": "cron",
+          "feature_vector": [
+            0.0625,
+            0.0,
+            0.0,
+            0.0,
+            0.0625,
+            0.0,
+            0.0625,
+            0.0,
+            0.125,
+            0.0,
+            0.0625,
+            0.0,
+            0.0,
+            0.125,
+            0.0,
+            0.0625,
+            0.125,
+            0.125,
+            0.0,
+            0.0625,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.125
+          ]
+        },
+        {
+          "event_index": 49,
+          "process_key": "nginx",
+          "feature_vector": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0625,
+            0.0625,
+            0.0,
+            0.0,
+            0.0625,
+            0.125,
+            0.0625,
+            0.0,
+            0.0,
+            0.0,
+            0.0625,
+            0.0,
+            0.125,
+            0.0625,
+            0.0,
+            0.0625,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0625,
+            0.0625,
+            0.1875
+          ]
+        },
+        {
+          "event_index": 89,
+          "process_key": "nginx",
+          "feature_vector": [
+            0.0625,
+            0.0,
+            0.125,
+            0.0,
+            0.0625,
+            0.0,
+            0.0,
+            0.0625,
+            0.0,
+            0.0,
+            0.0625,
+            0.0,
+            0.0625,
+            0.0,
+            0.0,
+            0.0625,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0625,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.4375
+          ]
+        },
+        {
+          "event_index": 97,
+          "process_key": "cron",
+          "feature_vector": [
+            0.0625,
+            0.0,
+            0.0,
+            0.0625,
+            0.0,
+            0.0,
+            0.125,
+            0.0,
+            0.0625,
+            0.0,
+            0.0,
+            0.0,
+            0.0625,
+            0.0625,
+            0.0,
+            0.0625,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.125,
+            0.0,
+            0.0625,
+            0.0,
+            0.0,
+            0.0625,
+            0.25
+          ]
+        },
+        {
+          "event_index": 98,
+          "process_key": "sshd",
+          "feature_vector": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0625,
+            0.125,
+            0.0,
+            0.0625,
+            0.0625,
+            0.0,
+            0.0,
+            0.0625,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0625,
+            0.125,
+            0.0625,
+            0.0625,
+            0.0625,
+            0.125,
+            0.0,
+            0.125
+          ]
+        },
+        {
+          "event_index": 124,
+          "process_key": "nginx",
+          "feature_vector": [
+            0.0625,
+            0.0,
+            0.0,
+            0.0,
+            0.0625,
+            0.0625,
+            0.0,
+            0.0625,
+            0.125,
+            0.0,
+            0.0,
+            0.0,
+            0.0625,
+            0.125,
+            0.0625,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0625,
+            0.0625,
+            0.0625,
+            0.0,
+            0.0,
+            0.0625,
+            0.0,
+            0.125
+          ]
+        },
+        {
+          "event_index": 145,
+          "process_key": "sshd",
+          "feature_vector": [
+            0.0,
+            0.0,
+            0.0625,
+            0.0625,
+            0.0625,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0625,
+            0.0,
+            0.0625,
+            0.0,
+            0.0,
+            0.125,
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0625,
+            0.0625,
+            0.0625,
+            0.0,
+            0.125,
+            0.125
+          ]
+        },
+        {
+          "event_index": 160,
+          "process_key": "cron",
+          "feature_vector": [
+            0.0,
+            0.0,
+            0.0625,
+            0.0,
+            0.0,
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.0625,
+            0.125,
+            0.0625,
+            0.0625,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0625,
+            0.0,
+            0.0625,
+            0.0,
+            0.0,
+            0.0625,
+            0.0625,
+            0.125,
+            0.0,
+            0.125
+          ]
+        },
+        {
+          "event_index": 176,
+          "process_key": "nginx",
+          "feature_vector": [
+            0.0625,
+            0.0,
+            0.0,
+            0.0,
+            0.0625,
+            0.0,
+            0.1875,
+            0.0625,
+            0.0,
+            0.0,
+            0.0,
+            0.0625,
+            0.0625,
+            0.0625,
+            0.0,
+            0.0625,
+            0.0,
+            0.0,
+            0.0625,
+            0.0,
+            0.0,
+            0.0,
+            0.0625,
+            0.0,
+            0.0,
+            0.0625,
+            0.1875
+          ]
+        },
+        {
+          "event_index": 193,
+          "process_key": "sshd",
+          "feature_vector": [
+            0.0625,
+            0.0,
+            0.0,
+            0.0,
+            0.0625,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0625,
+            0.0625,
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0625,
+            0.0,
+            0.0625,
+            0.0,
+            0.0,
+            0.0,
+            0.0625,
+            0.125,
+            0.0,
+            0.3125
+          ]
+        }
+      ]
+    },
+    {
+      "name": "default_w8_n128",
+      "window_size": 8,
+      "vocab": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        9,
+        10,
+        11,
+        21,
+        41,
+        42,
+        43,
+        44,
+        45,
+        47,
+        56,
+        57,
+        59,
+        60,
+        62,
+        87,
+        90,
+        92,
+        232,
+        257
+      ],
+      "events": [
+        {
+          "process_key": "sshd",
+          "syscall_nr": 11
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 21
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 9999
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 2
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 60
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 92
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 9
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 1
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 11
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 87
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 59
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 4
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 45
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 87
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 44
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 62
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10004
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 90
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 43
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 9
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 42
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 56
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10002
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 257
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 41
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10003
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 47
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 90
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 3
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 3
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 9
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10002
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 90
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10001
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 62
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 44
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 56
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 60
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10001
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 45
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10002
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 60
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 9999
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 56
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 90
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 42
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 56
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 3
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 1
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 90
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 45
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10002
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 9999
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 43
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10004
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 60
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 232
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 44
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 9
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 5
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 5
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 60
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 3
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 0
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 9999
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 3
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 45
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 47
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 62
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 56
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10003
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 232
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 59
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 62
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 56
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10004
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 90
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 59
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 1
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 21
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10003
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 257
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 0
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 21
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 0
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 9999
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 3
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 1
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10004
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 45
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 41
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 1
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 43
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 42
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 57
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 0
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 4
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 9
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 45
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 21
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 60
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 21
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10002
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10004
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 1
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 9
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 59
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 257
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 2
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 9
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 45
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 87
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10002
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10001
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 257
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 1
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10004
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 60
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 2
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 11
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 62
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 43
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 45
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 9999
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 9999
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 57
+        }
+      ],
+      "emissions": [
+        {
+          "event_index": 15,
+          "process_key": "sshd",
+          "feature_vector": [
+            0.0,
+            0.125,
+            0.125,
+            0.0,
+            0.0,
+            0.0,
+            0.125,
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.125,
+            0.125,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.125
+          ]
+        },
+        {
+          "event_index": 28,
+          "process_key": "nginx",
+          "feature_vector": [
+            0.0,
+            0.0,
+            0.0,
+            0.125,
+            0.125,
+            0.0,
+            0.125,
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.125,
+            0.25
+          ]
+        },
+        {
+          "event_index": 29,
+          "process_key": "cron",
+          "feature_vector": [
+            0.0,
+            0.0,
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.125,
+            0.125,
+            0.0,
+            0.25,
+            0.125,
+            0.125,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "event_index": 34,
+          "process_key": "sshd",
+          "feature_vector": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.125,
+            0.125,
+            0.125,
+            0.0,
+            0.0,
+            0.125,
+            0.125,
+            0.0,
+            0.0,
+            0.0,
+            0.125,
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.0,
+            0.125
+          ]
+        },
+        {
+          "event_index": 51,
+          "process_key": "sshd",
+          "feature_vector": [
+            0.0,
+            0.125,
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.125,
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.0,
+            0.25
+          ]
+        },
+        {
+          "event_index": 55,
+          "process_key": "nginx",
+          "feature_vector": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.0,
+            0.375
+          ]
+        },
+        {
+          "event_index": 58,
+          "process_key": "cron",
+          "feature_vector": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.125,
+            0.0,
+            0.125,
+            0.125,
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.25
+          ]
+        },
+        {
+          "event_index": 71,
+          "process_key": "sshd",
+          "feature_vector": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.25,
+            0.125,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.125,
+            0.0,
+            0.25
+          ]
+        },
+        {
+          "event_index": 77,
+          "process_key": "cron",
+          "feature_vector": [
+            0.0,
+            0.0,
+            0.0,
+            0.25,
+            0.0,
+            0.0,
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.125,
+            0.25,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.25
+          ]
+        },
+        {
+          "event_index": 85,
+          "process_key": "nginx",
+          "feature_vector": [
+            0.25,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.25,
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.125,
+            0.0
+          ]
+        },
+        {
+          "event_index": 97,
+          "process_key": "sshd",
+          "feature_vector": [
+            0.25,
+            0.125,
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.125,
+            0.0,
+            0.125
+          ]
+        },
+        {
+          "event_index": 103,
+          "process_key": "cron",
+          "feature_vector": [
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.125,
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.25,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.25
+          ]
+        },
+        {
+          "event_index": 109,
+          "process_key": "nginx",
+          "feature_vector": [
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.125,
+            0.125,
+            0.125,
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.125,
+            0.125
+          ]
+        },
+        {
+          "event_index": 120,
+          "process_key": "cron",
+          "feature_vector": [
+            0.0,
+            0.125,
+            0.125,
+            0.0,
+            0.0,
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.125,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.5
+          ]
+        }
+      ]
+    },
+    {
+      "name": "default_w32_n320",
+      "window_size": 32,
+      "vocab": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        9,
+        10,
+        11,
+        21,
+        41,
+        42,
+        43,
+        44,
+        45,
+        47,
+        56,
+        57,
+        59,
+        60,
+        62,
+        87,
+        90,
+        92,
+        232,
+        257
+      ],
+      "events": [
+        {
+          "process_key": "nginx",
+          "syscall_nr": 2
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 9999
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 59
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 3
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 45
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 47
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 5
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 92
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 3
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 43
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 56
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 44
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 60
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 92
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10003
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 21
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 87
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 90
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 21
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 0
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10004
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 21
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 41
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10002
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 60
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 47
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 257
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 0
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 90
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 43
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 2
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 87
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10003
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 9
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 62
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 21
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 232
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 92
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 9999
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 87
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 90
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 9999
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 44
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 232
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10001
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 3
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10001
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 43
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 47
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 4
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 90
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 21
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10001
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 11
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 59
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 43
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 60
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 9
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 5
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 232
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 232
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 59
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10003
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 9
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10001
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 5
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10004
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 62
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 60
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10004
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 257
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 257
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 1
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 43
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 2
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 9
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 9
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10001
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 4
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 21
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 56
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10001
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10004
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 92
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 9
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 57
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 90
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 1
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 90
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 42
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 60
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 87
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 87
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 56
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 59
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 9
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 56
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 4
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 47
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 57
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 257
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 43
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 0
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 57
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 9
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 232
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 43
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 43
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10002
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 43
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 42
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 42
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 47
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 3
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 57
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10003
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 59
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 232
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10003
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10001
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 232
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 9999
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 9999
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 11
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 47
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 42
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 11
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 59
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 41
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 62
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 59
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 3
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 45
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 43
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 90
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 2
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 5
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 56
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 44
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 87
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 41
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 9
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10003
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 4
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 21
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 42
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 57
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10003
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 4
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 44
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 87
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10002
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10004
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 4
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 57
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10002
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 1
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 60
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 5
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 232
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10003
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 57
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 0
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 2
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 44
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10001
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 87
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 44
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 11
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 90
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 41
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 43
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 232
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 56
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 257
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 56
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 5
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 45
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10001
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 59
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10004
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 0
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 42
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 232
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 90
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 59
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 87
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10001
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 90
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 57
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 59
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 87
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 41
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 87
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 60
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 257
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 47
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 0
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 57
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10001
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 62
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 62
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 43
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 42
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 92
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 2
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10001
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10001
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10004
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 4
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 3
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10002
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 44
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 11
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 43
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 87
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 5
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 47
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 87
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 92
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 0
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 9999
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 45
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 45
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 59
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 21
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10002
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 9
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 57
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 5
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 62
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10002
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10002
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 4
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 62
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10002
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 9
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 44
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 92
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 92
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 45
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 62
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 87
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 42
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 87
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 59
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 90
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 56
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 41
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 45
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10003
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 9
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 4
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 0
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10001
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10004
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 11
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 9
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 60
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 47
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 9999
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 9
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10001
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 47
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 9999
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 9999
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10002
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 56
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 60
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 59
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 9
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 56
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10003
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10002
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 0
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 87
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 41
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 4
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 4
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 257
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10003
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 56
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 43
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 56
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 9999
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 232
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 2
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 9
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10001
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 56
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 87
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 257
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 62
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 92
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 57
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 9
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10004
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 0
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 90
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10002
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 1
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 43
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 41
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 47
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 44
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10003
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 3
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10003
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 1
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10003
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 41
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 92
+        }
+      ],
+      "emissions": [
+        {
+          "event_index": 78,
+          "process_key": "sshd",
+          "feature_vector": [
+            0.0,
+            0.03125,
+            0.03125,
+            0.03125,
+            0.0,
+            0.03125,
+            0.0625,
+            0.03125,
+            0.0,
+            0.03125,
+            0.0,
+            0.0,
+            0.0625,
+            0.03125,
+            0.0,
+            0.0625,
+            0.0,
+            0.0,
+            0.03125,
+            0.09375,
+            0.0,
+            0.03125,
+            0.0625,
+            0.0625,
+            0.0,
+            0.0625,
+            0.25
+          ]
+        },
+        {
+          "event_index": 93,
+          "process_key": "nginx",
+          "feature_vector": [
+            0.03125,
+            0.03125,
+            0.0625,
+            0.03125,
+            0.03125,
+            0.0625,
+            0.0625,
+            0.03125,
+            0.0,
+            0.0625,
+            0.03125,
+            0.0,
+            0.0625,
+            0.0,
+            0.0,
+            0.03125,
+            0.03125,
+            0.0,
+            0.03125,
+            0.03125,
+            0.03125,
+            0.0625,
+            0.0625,
+            0.03125,
+            0.0625,
+            0.03125,
+            0.09375
+          ]
+        },
+        {
+          "event_index": 108,
+          "process_key": "cron",
+          "feature_vector": [
+            0.0625,
+            0.0,
+            0.0,
+            0.03125,
+            0.03125,
+            0.0,
+            0.09375,
+            0.0,
+            0.03125,
+            0.09375,
+            0.0,
+            0.0,
+            0.0625,
+            0.03125,
+            0.03125,
+            0.0,
+            0.03125,
+            0.0625,
+            0.0625,
+            0.03125,
+            0.03125,
+            0.03125,
+            0.03125,
+            0.0,
+            0.0625,
+            0.0,
+            0.1875
+          ]
+        },
+        {
+          "event_index": 185,
+          "process_key": "nginx",
+          "feature_vector": [
+            0.03125,
+            0.0,
+            0.03125,
+            0.03125,
+            0.03125,
+            0.0,
+            0.0,
+            0.0625,
+            0.03125,
+            0.03125,
+            0.0,
+            0.03125,
+            0.0625,
+            0.0625,
+            0.0,
+            0.03125,
+            0.03125,
+            0.0,
+            0.0625,
+            0.0,
+            0.03125,
+            0.0625,
+            0.03125,
+            0.0,
+            0.09375,
+            0.03125,
+            0.21875
+          ]
+        },
+        {
+          "event_index": 189,
+          "process_key": "sshd",
+          "feature_vector": [
+            0.0,
+            0.03125,
+            0.0,
+            0.0,
+            0.03125,
+            0.03125,
+            0.03125,
+            0.03125,
+            0.03125,
+            0.0,
+            0.03125,
+            0.0625,
+            0.03125,
+            0.03125,
+            0.03125,
+            0.03125,
+            0.125,
+            0.09375,
+            0.03125,
+            0.03125,
+            0.0,
+            0.0625,
+            0.0625,
+            0.03125,
+            0.03125,
+            0.03125,
+            0.09375
+          ]
+        },
+        {
+          "event_index": 199,
+          "process_key": "cron",
+          "feature_vector": [
+            0.0,
+            0.0,
+            0.03125,
+            0.03125,
+            0.0625,
+            0.0625,
+            0.03125,
+            0.0,
+            0.03125,
+            0.0,
+            0.09375,
+            0.0625,
+            0.0625,
+            0.03125,
+            0.03125,
+            0.03125,
+            0.0,
+            0.09375,
+            0.0625,
+            0.03125,
+            0.0,
+            0.03125,
+            0.03125,
+            0.0,
+            0.03125,
+            0.0,
+            0.15625
+          ]
+        },
+        {
+          "event_index": 267,
+          "process_key": "sshd",
+          "feature_vector": [
+            0.03125,
+            0.0,
+            0.0,
+            0.03125,
+            0.0625,
+            0.0,
+            0.0625,
+            0.03125,
+            0.03125,
+            0.03125,
+            0.0,
+            0.03125,
+            0.03125,
+            0.0625,
+            0.0625,
+            0.0,
+            0.0,
+            0.03125,
+            0.0625,
+            0.0,
+            0.0625,
+            0.15625,
+            0.03125,
+            0.0625,
+            0.0,
+            0.03125,
+            0.09375
+          ]
+        },
+        {
+          "event_index": 285,
+          "process_key": "nginx",
+          "feature_vector": [
+            0.09375,
+            0.0,
+            0.03125,
+            0.0,
+            0.0,
+            0.0625,
+            0.03125,
+            0.0,
+            0.03125,
+            0.0,
+            0.0,
+            0.03125,
+            0.03125,
+            0.0,
+            0.0,
+            0.0625,
+            0.0,
+            0.03125,
+            0.03125,
+            0.0625,
+            0.03125,
+            0.0625,
+            0.0,
+            0.0625,
+            0.03125,
+            0.03125,
+            0.28125
+          ]
+        },
+        {
+          "event_index": 306,
+          "process_key": "cron",
+          "feature_vector": [
+            0.03125,
+            0.0,
+            0.0,
+            0.0,
+            0.09375,
+            0.0,
+            0.0625,
+            0.0,
+            0.0,
+            0.0,
+            0.03125,
+            0.03125,
+            0.0,
+            0.0,
+            0.0625,
+            0.0625,
+            0.0625,
+            0.0,
+            0.03125,
+            0.0,
+            0.0625,
+            0.03125,
+            0.03125,
+            0.03125,
+            0.03125,
+            0.0,
+            0.34375
+          ]
+        }
+      ]
+    },
+    {
+      "name": "small_w4_n40",
+      "window_size": 4,
+      "vocab": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "events": [
+        {
+          "process_key": "cron",
+          "syscall_nr": 10003
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 2
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10004
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 0
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 3
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 1
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 9999
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 0
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10001
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 2
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10002
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 2
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 2
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 3
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10004
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 1
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 10004
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10003
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 0
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 3
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 3
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10003
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 3
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 0
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 2
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 2
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 2
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10003
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 1
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 1
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 2
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 3
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 10003
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 2
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 1
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 10003
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 2
+        },
+        {
+          "process_key": "cron",
+          "syscall_nr": 3
+        },
+        {
+          "process_key": "nginx",
+          "syscall_nr": 2
+        },
+        {
+          "process_key": "sshd",
+          "syscall_nr": 1
+        }
+      ],
+      "emissions": [
+        {
+          "event_index": 8,
+          "process_key": "sshd",
+          "feature_vector": [
+            0.25,
+            0.0,
+            0.0,
+            0.25,
+            0.5
+          ]
+        },
+        {
+          "event_index": 10,
+          "process_key": "cron",
+          "feature_vector": [
+            0.25,
+            0.0,
+            0.25,
+            0.0,
+            0.5
+          ]
+        },
+        {
+          "event_index": 13,
+          "process_key": "nginx",
+          "feature_vector": [
+            0.0,
+            0.25,
+            0.25,
+            0.25,
+            0.25
+          ]
+        },
+        {
+          "event_index": 17,
+          "process_key": "cron",
+          "feature_vector": [
+            0.0,
+            0.25,
+            0.25,
+            0.0,
+            0.5
+          ]
+        },
+        {
+          "event_index": 23,
+          "process_key": "nginx",
+          "feature_vector": [
+            0.5,
+            0.0,
+            0.0,
+            0.25,
+            0.25
+          ]
+        },
+        {
+          "event_index": 27,
+          "process_key": "sshd",
+          "feature_vector": [
+            0.0,
+            0.0,
+            0.25,
+            0.5,
+            0.25
+          ]
+        },
+        {
+          "event_index": 30,
+          "process_key": "cron",
+          "feature_vector": [
+            0.0,
+            0.25,
+            0.5,
+            0.0,
+            0.25
+          ]
+        },
+        {
+          "event_index": 31,
+          "process_key": "nginx",
+          "feature_vector": [
+            0.0,
+            0.25,
+            0.5,
+            0.25,
+            0.0
+          ]
+        }
+      ]
+    }
+  ]
+}

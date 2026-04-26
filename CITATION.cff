@@ -1,0 +1,41 @@
+cff-version: 1.2.0
+message: >
+  If you use ChronosynD in academic work, please cite it as below. The
+  Sediment algorithm itself, the threat-model formalization, the paper
+  prose, the figures, and this citation entry are licensed under
+  CC-BY-4.0, so they are free to cite, quote, and reproduce with
+  attribution. The Python and Rust implementations of the algorithm
+  are licensed under Apache-2.0. See LICENSE, LICENSE-CC-BY-4.0, and
+  NOTICE in the repository for the full split.
+title: "ChronosynD: Poisoning-Resistant Behavioral Baselines for Host Intrusion Detection"
+abstract: >
+  ChronosynD is a behavioral host intrusion detection system that detects
+  process-level drift from per-host behavioral baselines. Its core research
+  contribution is Sediment, a poisoning-resistant baseline estimator
+  designed to remain useful when the baseline-learning window contains
+  adversary activity. The system pairs a Rust runtime backed by eBPF on
+  Linux with a Python research reference, kept in lock-step through a
+  cross-implementation parity test on every push.
+authors:
+  - name: Vurmusum
+    alias: vurmusum
+    github-username: vurmusum
+    email: vurmusum@gmail.com
+year: 2026
+version: 0.1.0
+repository-code: "https://github.com/ChronosynD/core"
+url: "https://github.com/ChronosynD/core"
+license: Apache-2.0
+license-url: "https://www.apache.org/licenses/LICENSE-2.0"
+type: software
+keywords:
+  - intrusion-detection
+  - host-intrusion-detection
+  - behavioral-analysis
+  - anomaly-detection
+  - baseline-poisoning
+  - ebpf
+  - poisoning-resistant
+  - robust-statistics
+  - trimmed-mean
+  - security

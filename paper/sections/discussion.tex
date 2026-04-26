@@ -1,0 +1,57 @@
+% SPDX-License-Identifier: CC-BY-4.0
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{When \sediment{} helps cleanly}
+
+\sediment{} is at its strongest when the benign distribution is
+broadly Gaussian per feature, the adversary budget $\budget$ is at
+most $\trim/2$, and the target attack behavior $\target$ sits
+outside the typical benign envelope. Under those conditions
+\cref{prop:robust} applies: the trimmed mean is provably resistant
+up to the breakdown rate of $\trim/2$, and the Gaussian-truncation
+correction restores an unbiased $\sigma$ estimate. The
+clean-condition false-positive rate matches the naive estimator
+(\cref{sec:eval-fp-cost}), which makes \trim{} a near-free knob
+to dial up against adversaries. Choosing \trim{} larger than
+necessary costs little. Choosing it smaller than $2\budget$ costs a
+lot.
+
+\subsection{When the bias correction over-trims}
+
+The closed-form correction $c(\trim)$ assumes a unimodal Gaussian
+null. On bimodal benign distributions the trimmed middle has
+strictly lower variance than the full mixture, so the corrected
+$\sigma$ underestimates the true population spread. The result,
+visible in \cref{fig:exp06}, is inflated absolute scores at low
+budgets even though threshold-invariant discriminability ratios
+stay reasonable. The mitigation for production deployment is
+workload-specific. Operators whose feature distributions are known
+to be multimodal should pair \sediment{} with a mixture-aware
+preprocessor or fall back to a different estimator family for
+those features.
+
+\subsection{Concept drift versus the maintenance window}
+
+\sediment{} addresses adversarial drift, not concept drift. The
+\texttt{maintenance start/end} CLI subcommands give operators a way
+to mark intervals where baseline shifts are expected. Maintenance
+windows are written to the audit log and can be queried during
+incident review. The two mechanisms are orthogonal. \sediment{}
+tightens what counts as a robust baseline at fit time. Maintenance
+windows tell the operator-facing review path which alerts to expect
+during legitimate transitions.
+
+\subsection{Residual risk from adaptive adversaries}
+
+The white-box experiment in \cref{sec:eval-white-box} shows an
+adversary who knows \trim{} and grid-searches the optimal placement
+does not gain a meaningful advantage over the at-target injection.
+This is not a security proof. An adaptive adversary with control
+over the full attack-fit fixed-point loop, an oracle for the
+post-fit $(\mu, \sigma)$ moments, or the ability to shape multiple
+correlated features in concert may yet find a placement that
+outperforms target injection. We report the negative result of our
+grid search as evidence that the obvious attack class does not
+break the construction. We do not claim the construction is
+unconditionally robust.

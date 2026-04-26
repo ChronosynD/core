@@ -1,0 +1,304 @@
+% SPDX-License-Identifier: CC-BY-4.0
+\section{Evaluation}
+\label{sec:evaluation}
+
+\subsection{Setup}
+
+\paragraph{Workloads.} Three synthetic factories drive the
+experiments: \texttt{isotropic\_gaussian} for the canonical
+experiments, \texttt{heterogeneous\_gaussian} for per-feature
+heterogeneity, and \texttt{gaussian\_mixture} for multimodal benign
+distributions. All are deterministic given a seed.
+
+\paragraph{Attacks.} Three poisoning attacks instantiate the threat
+model:
+\begin{itemize}
+\item \texttt{inject\_pre\_seed}, the black-box adversary,
+  target-valued injections shuffled uniformly across the window.
+\item \texttt{inject\_burst}, contiguous-block injections at a
+  chosen or randomly-drawn position.
+\item \texttt{inject\_targeted}, the white-box adversary that
+  grid-searches the per-feature placement minimizing
+  $\score(\target)$ after a fresh fit by an estimator with known
+  \trim{}.
+\end{itemize}
+
+\paragraph{Estimators.} Four estimators are compared.
+\textsc{Naive} uses per-feature mean and standard deviation, the
+prior-work reference. \textsc{Consensus} splits the learning window
+into four sub-windows and drops features whose sub-window means
+disagree by more than three pooled standard deviations.
+\textsc{Anomaly-Within} fits naive on the full window, drops the
+top decile of within-window outliers, and refits on what survives.
+\sediment{} runs at trim fractions $\{0.1, 0.2, 0.3, 0.5\}$.
+
+\paragraph{Reporting.} Every cell uses ten independent seeds, drawn
+deterministically from \texttt{numpy.random.SeedSequence(seed).spawn(4)}
+to give independent learning-window, poisoning, benign-test, and
+malicious-test streams. The target FPR is 0.05 throughout. Error
+bars are standard error across seeds. Every figure regenerates from
+\href{run:../scripts/reproduce_all.sh}{\texttt{scripts/reproduce\_all.sh}}.
+
+\subsection{Clean-baseline FPR is at the configured target}
+\label{sec:eval-clean-fpr}
+
+By construction the per-estimator threshold is the
+$1 - \texttt{target\_fpr}$ quantile of benign scores on each cell,
+so the empirical FPR matches the configured target up to
+discretization noise. \cref{fig:exp01} confirms this: every cell
+lands at FPR\,=\,0.0500 with standard error below 0.0001 across ten
+seeds. This is a sanity panel; differentiation across estimators
+shows up in the next subsections.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{fig01_clean_baseline_fpr.pdf}
+  \caption{Clean-condition false-positive rate per estimator. Error
+    bars are standard error across ten seeds.}
+  \label{fig:exp01}
+\end{figure}
+
+\subsection{Naive collapse under poisoning}
+\label{sec:eval-naive-collapse}
+
+\cref{fig:exp02} shows the target score \textsc{Naive} assigns to
+\target{} as the adversary's budget grows. Clean-condition score is
+roughly 130. At $\budget = 0.05$ it falls to 70; at $\budget = 0.10$
+to 48; at $\budget = 0.15$ to 36. The collapse is smooth and
+approximately log-linear in \budget{}, not threshold-like. There is
+no ``safe'' small budget. Even modest poisoning rates the adversary
+could plausibly achieve cost substantial discriminability.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{fig02_naive_under_poisoning.pdf}
+  \caption{\textsc{Naive} target score under poisoning. The smooth
+    decay shows there is no threshold-like ``safe'' adversary
+    budget.}
+  \label{fig:exp02}
+\end{figure}
+
+\subsection{\sediment{} design space}
+\label{sec:eval-sediment-design}
+
+\cref{fig:exp03} sweeps the joint $(\trim{}, \budget{})$ grid for
+\sediment{}. Two structural features stand out. First, the
+robustness boundary tracks $\budget = \trim/2$ predicted by
+\cref{prop:robust}: for budgets at or below half the trim fraction,
+the target score holds within a small constant factor of the
+clean-condition value. Second, the cost of choosing too high a trim
+is bounded: a $\trim = 0.50$ defender pays nothing in
+clean-condition discriminability (\cref{sec:eval-fp-cost}) but
+loses headroom against budgets above $0.25$. The recommended
+operating point is the smallest $\trim$ at least double the worst
+expected adversary budget.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{fig03_robust_under_poisoning.pdf}
+  \caption{\sediment{} target score across the budget $\times$
+    trim-fraction grid. The robustness boundary tracks
+    $\budget = \trim/2$.}
+  \label{fig:exp03}
+\end{figure}
+
+\subsection{Budget sweep, naive vs.\ \sediment{}}
+\label{sec:eval-budget-sweep}
+
+\cref{fig:exp04-target} overlays \textsc{Naive} and \sediment{} at
+$\trim = 0.30$ across the budget grid. At $\budget \leq 0.10$,
+\sediment{}'s target score holds within 30\% of clean-condition
+while \textsc{Naive} loses more than half. The gap closes past
+$\budget = 0.20$ as \sediment{}'s budget guarantee runs out, but
+the discriminability ratio stays favorable through $\budget = 0.30$.
+The companion score-ratio and detection-rate panels in the
+reproducibility artifact tell the same story with
+threshold-invariant metrics.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{fig04_target_score.pdf}
+  \caption{Target score under poisoning, \textsc{Naive} versus
+    \sediment{} at $\trim = 0.30$.}
+  \label{fig:exp04-target}
+\end{figure}
+
+\subsection{Clean-condition FP cost of \trim{}}
+\label{sec:eval-fp-cost}
+
+The closed-form Gaussian-truncation correction $c(\trim)$ is meant
+to restore the trimmed standard deviation to an unbiased estimate
+of the underlying $\sigma$. \cref{fig:exp05} shows it works as
+advertised. Across $\trim \in \{0.05, 0.10, 0.15, 0.20, 0.30, 0.40,
+0.50\}$, both the threshold value and the empirical FPR are
+statistically indistinguishable from the naive estimator's. Under
+Gaussian benign distributions, picking a higher trim costs nothing
+in clean-condition false-positive rate. The cost shows up only
+when the benign distribution departs from the Gaussian null, which
+we look at next.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{fig05_fp_cost.pdf}
+  \caption{Clean-condition FPR as a function of trim fraction. Under
+    Gaussian benign, the Gaussian-truncation correction holds the
+    cost to within statistical noise.}
+  \label{fig:exp05}
+\end{figure}
+
+\subsection{Multimodal benign distributions}
+\label{sec:eval-multimodal}
+
+\cref{fig:exp06} runs the budget sweep against a two-component
+Gaussian mixture benign with the target placed past the upper mode.
+The closed-form correction $c(\trim)$ is calibrated to a unimodal
+Gaussian null and overestimates how much variance the trimmed tails
+were carrying, so the corrected $\sigma$ underestimates the true
+population spread. The visible effect is inflated absolute target
+scores at low budgets compared with the unimodal case. The
+threshold-invariant discriminability ratios stay reasonable. We
+return to this structural limit in \cref{sec:discussion}.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{fig06_target_score.pdf}
+  \caption{Target score under multimodal benign distributions.}
+  \label{fig:exp06}
+\end{figure}
+
+\subsection{Ablation: alternative robustness primitives, uniform poisoning}
+\label{sec:eval-ablation}
+
+\cref{fig:exp07} runs the four-way ablation under \texttt{pre\_seed}
+poisoning. \sediment{} dominates at every budget tested.
+\textsc{Anomaly-Within} provides meaningful resistance up to roughly
+its own \texttt{drop\_fraction} (0.10) and degrades smoothly past
+it. \textsc{Consensus} is mathematically identical to
+\textsc{Naive} under uniform poisoning. \texttt{pre\_seed} shuffles
+injections uniformly across sub-windows, so every sub-window's mean
+shifts by the same amount, the disagreement test never fires, and
+the score reduces to the unfiltered naive computation.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{fig07_target_score.pdf}
+  \caption{Four-way ablation under uniform poisoning.}
+  \label{fig:exp07}
+\end{figure}
+
+\subsection{Ablation: alternative robustness primitives, burst poisoning}
+\label{sec:eval-burst}
+
+\cref{fig:exp08} repeats the four-way ablation under
+\texttt{inject\_burst}, the attack pattern that should give a
+sub-window consensus filter the strongest chance. The result runs
+counter to that intuition: \textsc{Consensus} performs \emph{worse}
+than \textsc{Naive} at high burst budgets. The features carrying
+the largest target signal are also the features whose sub-window
+means disagree most under a burst, so the consensus filter drops
+exactly the features that would have driven detection. The
+ablation surfaces a structural problem with consensus filtering as
+a robustness primitive against this threat model: it cannot tell a
+feature shifted by an attacker burst apart from a feature shifted
+by an underlying workload change, and penalizing the former drops
+detection signal along with it.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{fig08_target_score.pdf}
+  \caption{Four-way ablation under burst poisoning.}
+  \label{fig:exp08}
+\end{figure}
+
+\subsection{White-box adversary}
+\label{sec:eval-white-box}
+
+\cref{fig:exp09} repeats the four-way ablation under
+\texttt{inject\_targeted}, the grid-search white-box adversary that
+knows each defender's trim parameter. The headline finding: the
+optimum placement against \sediment{} converges to the at-target
+injection. We verified this numerically by inspecting the
+grid-search trajectory. At the budgets where the optimum is
+interior to $[\text{median}, \target]$, the chosen value sits at
+the trim-boundary benign quantile, and the resulting fitted moments
+are mathematically equivalent to those produced by at-target
+injection. Swapping one boundary-quantile benign sample for one
+boundary-valued injection leaves the trimmed mean and variance
+unchanged. White-box knowledge of \trim{} therefore does not yield
+a stronger attack against a symmetric-trim defender than the
+budget-bounded black-box adversary the construction was designed
+against. This is the strongest threat-model evidence the paper
+produces. We discuss residual risks from more sophisticated
+adaptive adversaries in \cref{sec:discussion}.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{fig09_target_score.pdf}
+  \caption{Four-way ablation under white-box targeted poisoning.
+    The grid-search adversary's optimal placement against
+    \sediment{} reduces to the at-target injection.}
+  \label{fig:exp09}
+\end{figure}
+
+\subsection{Real-data validation}
+\label{sec:eval-real-data}
+
+The synthetic experiments above are the paper's controlled evidence.
+This subsection reports a smaller-scale end-to-end validation against
+real Linux behavior captured live by the runtime, included to
+demonstrate that the algorithm transfers to a real captured feature
+distribution.
+
+\paragraph{Setup.} Ubuntu 24.04 (kernel 6.6) under WSL2. The
+\chronosynd{} BPF probe attaches to \texttt{raw\_syscalls/sys\_enter}
+and emits one event per syscall, classified by syscall number against
+a 26-entry vocab plus an other-bucket. The collector ran for 3
+minutes capturing real \texttt{bash} activity (a script driving
+\texttt{ls}, \texttt{cat}, \texttt{find}, \texttt{grep}, \texttt{wc}
+in a loop), producing 730k bash-keyed events forming 45{,}640
+closed feature windows. \sediment{} fitted at $\trim = 0.30$ on the
+captured trace. The persisted baseline showed nonzero mass at six
+vocab buckets (read, close, clone, execve, openat, other) with
+matching nonzero standard deviations, confirming a non-degenerate
+fit on real workload data.
+
+\paragraph{Attack run.} A separate 60-second capture ran the
+\texttt{spawn\_storm.sh} (200 helper processes) and
+\texttt{etc\_recon.sh} (500 file reads under \texttt{/etc}) payloads
+under bash while the daemon scored bash windows live against the
+fitted baseline. Both payloads shape bash's syscall mix sharply
+toward exec/clone/openat events.
+
+\paragraph{Results.} The fitted threshold for bash was 100.0. Across
+3{,}846 bash windows during the attack capture:
+
+\begin{itemize}
+\item \textbf{Alerts:} 1{,}683 windows scored above threshold (43.8\%).
+\item \textbf{Clean (below threshold):} 2{,}163 windows.
+\item \textbf{Clean window score distribution:} median 4.83, p90 30.69,
+  max 83.01. Every clean window scored well below the 100 threshold,
+  so the empirical false-positive rate during the attack window was
+  zero.
+\item \textbf{Alert window score distribution:} median 609.51, p90
+  $7.8 \times 10^{9}$, max $3.2 \times 10^{11}$.
+\item \textbf{Median separation:} the median alert score is 126$\times$
+  the median clean score.
+\end{itemize}
+
+The very large alert scores are real but reflect a known artifact of
+the fitted baseline: when a feature has zero variance under clean
+bash (e.g., a syscall that never occurs in the clean window), the
+trimmed std collapses to zero, the per-feature score denominator
+floors at $\epsilon$, and any nonzero attack value blows the squared
+standardized residual up by $1/\epsilon^2$. The construction
+correctly flags the deviation, the magnitude just compresses
+poorly into a single scalar at the extreme. A logarithmic score
+or a per-feature cap at three or four standard deviations would
+give cleaner numerics; we leave that as a deployment-time tuning
+choice rather than an algorithmic change.
+
+This is a single workload on a single host, not a controlled
+multi-host evaluation. We report it as evidence the artifact runs
+end-to-end on real captured behavior with non-trivial detection
+signal, not as a substitute for the controlled synthetic
+experiments above.

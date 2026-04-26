@@ -1,0 +1,26 @@
+[package]
+name = "chronosynd-features"
+description = "Behavioral feature extractors, syscall n-grams, file-access profiles, network profiles, child-spawn graphs"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+
+[lib]
+# rlib for in-workspace use, cdylib for pyo3 bindings importable from Python
+crate-type = ["rlib", "cdylib"]
+path = "src/lib.rs"
+
+[features]
+default = []
+# Turns on PyO3 bindings so chronosynd-py can use this crate directly
+python = []  # Will add `dep:pyo3` once pinned.
+
+[dependencies]
+thiserror = { workspace = true }
+# Future pins: pyo3 (optional, for the python feature), smallvec for hot paths
+
+[dev-dependencies]
+serde = { workspace = true }
+serde_json = { workspace = true }

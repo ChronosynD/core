@@ -1,0 +1,63 @@
+% SPDX-License-Identifier: CC-BY-4.0
+\section{The \chronosynd{} system}
+\label{sec:system}
+
+\subsection{Pipeline}
+
+\chronosynd{} is a one-directional pipeline:
+\begin{equation*}
+  \text{kernel BPF}
+  \,\longrightarrow\,
+  \text{ring buffer}
+  \,\longrightarrow\,
+  \text{collector}
+  \,\longrightarrow\,
+  \text{features}
+  \,\longrightarrow\,
+  \text{scorer}
+  \,\longrightarrow\,
+  \text{alerts}
+\end{equation*}
+Kernel-side BPF programs emit raw syscall events into a userspace
+ring buffer. The collector normalizes them into typed events and
+feeds disjoint per-process windows to the n-gram feature extractor.
+When a window closes, the extractor emits a fixed-shape feature
+vector. The scoring engine compares it against the cached baseline
+for that process and raises an alert when the drift score exceeds
+the per-process threshold. A SQLite store persists baselines and is
+read at startup to warm the scorer's in-memory cache.
+
+\subsection{Cross-language reference and production split}
+
+\sediment{} and the n-gram extractor each have two implementations:
+a Python reference in
+\href{run:../chronosynd-py/}{\texttt{chronosynd-py/}} and a Rust
+production port in
+\href{run:../chronosynd-rs/}{\texttt{chronosynd-rs/}}. Python is
+authoritative during research iteration. Rust is authoritative for
+deployment. CI runs cross-implementation parity tests on every push,
+covering both the baseline estimator (15 cases at three sample sizes
+and four estimator configurations, 20 score inputs each) and the
+syscall n-gram extractor (4 event-stream cases at varied window
+sizes and vocabularies). Divergence between sides fails the build.
+
+\subsection{Tamper-evident store}
+
+Every state-changing operation (\texttt{put\_baseline},
+\texttt{start\_maintenance\_window}, \texttt{end\_maintenance\_window})
+commits in a single transaction together with an audit row. The
+audit row's SHA-256 hash covers the operation, the payload, and the
+previous row's hash. The chain is anchored at the all-zero hash, so
+any tampering breaks the chain at the tampered row.
+\texttt{verify-store} walks the chain and exits with a distinguished
+code on tamper detection, so an operator's monitoring system can
+tell tampering apart from a CLI crash.
+
+\subsection{Operator surface}
+
+Operators interact with \chronosynd{} through a single CLI binary.
+The subcommands cover baseline inspection, tagging maintenance
+windows when planned changes will shift the baseline, walking the
+audit log to detect tampering, fitting baselines from CSV
+observations or recorded JSONL event traces, and running the
+collector daemon end-to-end against a configured store.

@@ -1,0 +1,35 @@
+[package]
+name = "chronosynd-cli"
+description = "Operator CLI for ChronosynD, manage baselines, tag maintenance windows, view alerts"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+
+[lib]
+name = "chronosynd_cli"
+path = "src/lib.rs"
+
+[[bin]]
+name = "chronosynd"
+path = "src/main.rs"
+
+[dependencies]
+chronosynd-baseline = { path = "../baseline" }
+chronosynd-collector = { path = "../collector" }
+chronosynd-storage = { path = "../storage" }
+clap = { workspace = true }
+anyhow = { workspace = true }
+csv = { workspace = true }
+ndarray = { workspace = true }
+
+[dev-dependencies]
+# Tests inject tamper directly into the SQLite store to verify detection,
+# the test-utils feature exposes `raw_connection` for that purpose only
+chronosynd-storage = { path = "../storage", features = ["test-utils"] }
+
+[features]
+default = []
+# Forwards to the collector's bpf feature so `chronosynd run --bpf` works
+bpf = ["chronosynd-collector/bpf"]

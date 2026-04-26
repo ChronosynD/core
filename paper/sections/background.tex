@@ -1,0 +1,57 @@
+% SPDX-License-Identifier: CC-BY-4.0
+\section{Background and related work}
+\label{sec:background}
+
+\subsection{Behavioral host intrusion detection}
+
+Forrest's ``sense of self''~\cite{forrest1996sense} observed that a
+process's syscall sequence under normal operation is a stable,
+low-entropy fingerprint and that deviations from that fingerprint are
+detectable. Subsequent work moved along two axes. \emph{Richer
+features}: from raw syscall sequences to file-access profiles,
+network endpoints, and child-spawn graphs. \emph{Richer models}: from
+fixed-length n-grams to hidden-Markov models, recurrent networks, and
+provenance-graph anomaly detectors~\cite{goyal2023mimicry}. The
+modeling choices have moved a lot in thirty years. The assumption
+that the learning window is adversary-free has not.
+
+\subsection{Mimicry attacks}
+
+A long line of work shows that detectors which inspect only the live
+behavioral stream fall to mimicry attacks: an adversary who knows the
+detector's signature pads malicious activity with otherwise benign
+behavior to evade detection
+~\cite{wagner2002mimicry,goyal2023mimicry}. Goyal et al.\ force
+misclassification on every provenance-graph host intrusion detector
+they test by embedding substructures from legitimate process activity
+into the attack subgraph~\cite{goyal2023mimicry}.
+
+Baseline poisoning is related but distinct. Mimicry adversaries shape
+what their attack \emph{looks like} at detection time. Poisoning
+adversaries shape what the detector considers \emph{normal} at
+training time. The two compose: an adversary who can do both has more
+leverage than one who can only do one.
+
+\subsection{Robust statistics}
+
+Robust statistics gives several primitives for estimating central
+tendency and dispersion in the presence of
+outliers~\cite{huber1964robust,rousseeuw1985mvd}. \sediment{} draws
+on the trimmed-mean tradition. The classical breakdown point of the
+symmetric $\trim$-trimmed mean is $\trim/2$: an adversary controlling
+fewer than $\trim N / 2$ samples cannot move the trimmed mean an
+arbitrary amount~\cite{huber1964robust}. The piece we add is a
+closed-form Gaussian-truncation correction that recovers an unbiased
+estimate of the underlying $\sigma$ on clean data while keeping the
+trimmed mean's resistance.
+
+\subsection{Concept drift versus adversarial drift}
+
+Production behavioral detectors often conflate two distinct things
+under the label ``drift'': natural \emph{concept drift} (the workload
+genuinely changed) and \emph{adversarial drift} (an attacker is
+manipulating the inputs). \chronosynd{} treats them as orthogonal.
+The maintenance-window mechanism in \cref{sec:system} addresses
+concept drift by giving operators an explicit way to mark intervals
+where baseline shifts are expected. \sediment{} addresses
+adversarial drift at the estimator level.

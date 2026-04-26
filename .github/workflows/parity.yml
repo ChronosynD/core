@@ -1,0 +1,24 @@
+name: parity
+
+# Cross-implementation parity check, fails the build if Python and Rust outputs diverge
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  parity:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: astral-sh/setup-uv@v3
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: chronosynd-rs -> target
+      - name: Sync Python deps
+        working-directory: chronosynd-py
+        run: uv sync --extra dev
+      - name: Run parity check
+        run: bash scripts/check_parity.sh

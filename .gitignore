@@ -1,0 +1,138 @@
+# Rust
+target/
+**/*.rs.bk
+*.pdb
+Cargo.lock.bak
+
+# BPF build artifacts
+*.bpf.o
+*.skel.h
+vmlinux.h
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# virtualenvs / uv
+.venv/
+venv/
+env/
+ENV/
+.python-version
+# uv.lock is intentionally tracked: paper-figure reproducibility requires
+# bit-identical dependency versions across machines and CI. Do not add.
+
+# pytest / mypy / ruff / coverage
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_meta
+
+# LaTeX (paper/)
+paper/build/
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.nav
+*.snm
+*.vrb
+*.dvi
+*.idx
+*.ilg
+*.ind
+*.xdv
+
+# Evaluation / data
+evaluation/results/raw/
+evaluation/results/cache/
+datasets/raw/
+datasets/staging/
+*.pcap
+*.trace
+
+# Runtime artifacts (baseline stores from chronosynd run / fit-baseline)
+*.db
+*.sqlite
+*.sqlite-journal
+*.sqlite-wal
+*.sqlite-shm
+
+# Recorded event traces from chronosynd run --record
+*.jsonl
+
+# Editor / OS
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.code-workspace
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
+ehthumbs_vista.db
+$RECYCLE.BIN/
+*.lnk
+
+# Merge / backup residue
+*.bak
+*.orig
+*.rej
+*.tmp
+
+# Profiling / coverage outputs
+*.profraw
+flame.svg
+flamegraph.svg
+coverage.xml
+*.cover
+.dmypy.json
+.hypothesis/
+.benchmarks/
+tags
+TAGS
+
+# Secrets / local config
+.env
+.env.local
+*.pem
+*.key

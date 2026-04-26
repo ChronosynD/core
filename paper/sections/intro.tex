@@ -1,0 +1,62 @@
+% SPDX-License-Identifier: CC-BY-4.0
+\section{Introduction}
+\label{sec:intro}
+
+Behavioral host intrusion detection systems watch a process's
+syscalls, file access, network endpoints, and child spawns, fit a
+per-process baseline from those observations, and score live behavior
+as drift against the baseline. The lineage starts with Forrest's
+``sense of self''~\cite{forrest1996sense} and runs through n-gram
+sequence models, hidden-Markov detectors, and modern provenance-graph
+systems~\cite{goyal2023mimicry}. The features changed; the assumption
+that the learning window is adversary-free did not.
+
+That assumption fails in practice. Mandiant's M-Trends 2025 report
+~\cite{mandiant2025mtrends} puts the global median attacker dwell time
+at 11 days for 2024 incidents, with a longer tail for sophisticated
+threat actors. Any detector that turns on while the adversary is
+already on the host fits a baseline shaped by the adversary. After
+that, the adversary's behavior \emph{is} the baseline's notion of
+normal, and the detector cannot tell planted behavior apart from
+genuine drift.
+
+We call this \emph{baseline poisoning}. The lever is not exotic. A
+single elevated shell session can shape the baseline of every
+behavioral feature the detector tracks for that process, and a
+carefully-paced injection slips past any change-point detector
+watching the live stream. The question is what property an estimator
+needs to stay useful when the learning window is partially
+adversarial, and what an operator pays for that property in
+clean-condition false-positive rate.
+
+This paper makes four contributions.
+
+\begin{enumerate}
+\item We \textbf{formalize} the baseline-poisoning threat model
+  (\cref{sec:threat-model}). The adversary has a budget
+  $\budget \in [0, 1]$ that bounds the fraction of the learning
+  window they control. We consider observability variants up to a
+  white-box adversary that knows the defender's hyperparameters.
+\item We \textbf{demonstrate} that the naive mean-and-stddev
+  estimator widely used in prior work loses roughly a factor of
+  3.6 in target-score discriminability at a 15\% poisoning budget on
+  our isotropic synthetic workload, and continues to degrade
+  smoothly as the budget grows
+  (\cref{sec:eval-naive-collapse}).
+\item We \textbf{propose} \sediment{} (\cref{sec:sediment}), a
+  per-feature trimmed-moment estimator with a closed-form
+  Gaussian-truncation bias correction. Setting $\trim{} \geq 2\budget$
+  gives a defensible robustness guarantee against any adversary with
+  budget at most \budget{}.
+\item We \textbf{evaluate} the design space across nine experiments
+  (\cref{sec:evaluation}), including a four-way ablation against
+  alternative robustness primitives and three poisoning attacks:
+  uniform shuffled, contiguous burst, and a grid-search white-box
+  adversary that knows \trim{}.
+\end{enumerate}
+
+A reference Python implementation accompanies a production Rust
+runtime; cross-implementation parity tests on every push keep them
+bit-equivalent across both the estimator and the syscall n-gram
+extractor. The artifact is open
+source.\footnote{\url{https://github.com/ChronosynD/core}}

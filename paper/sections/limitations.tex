@@ -1,0 +1,61 @@
+% SPDX-License-Identifier: CC-BY-4.0
+\section{Limitations}
+\label{sec:limitations}
+
+\paragraph{Independent-Gaussian assumption.}
+\sediment{} models each feature as an independent Gaussian under the
+clean null. Multimodal feature distributions and feature-feature
+correlations both fall outside this assumption. Mixture-aware
+estimators and full-covariance robust estimators are natural
+follow-ups. The \textsc{Anomaly-Within} ablation already shows a
+rudimentary multivariate filter; a principled robust covariance
+estimator is left to future work.
+
+\paragraph{Single-host real-data run.}
+The controlled poisoning evaluation runs on synthetic Gaussian
+workloads. \cref{sec:eval-real-data} adds a single-host real-data
+demonstration on captured Linux \texttt{bash} activity, but a
+controlled multi-host evaluation across diverse workloads remains
+future work. The synthetic setup is stronger than it looks: the
+Gaussian assumption is the most favorable case for \textsc{Naive},
+since its modeling assumption matches the data-generating
+distribution. The gap we observe between \textsc{Naive} and
+\sediment{} under poisoning is therefore a lower bound on what
+would appear under real heavier-tailed workloads where \textsc{Naive}'s
+outlier sensitivity is more pronounced.
+
+\paragraph{Identity assumption.}
+The threat model assumes the adversary cannot manipulate kernel-side
+identity (PID, UID, cgroup). This holds for unprivileged adversaries
+on properly-configured hosts but starts to fray under kernel-level
+compromise. \chronosynd{} treats kernel-level adversaries as out of
+scope.
+
+\paragraph{Per-process scope.}
+\sediment{} fits one baseline per process key, where the key in our
+implementation is the process command name. An adversary who can
+spawn a fresh process under an unfamiliar name will not have a
+baseline for that process to drift against, only the ``never seen
+this process before'' signal that the daemon surfaces as an
+\texttt{[err]}-prefixed cache-miss line. Whether such cache misses
+warrant an alert is an operator policy choice orthogonal to
+\sediment{}'s correctness. In production it depends on the host's
+expected process diversity. Our prototype emits the cache-miss
+signal but takes no policy position on it.
+
+\paragraph{Research artifact, not a production HIDS.}
+\chronosynd{} is a research prototype. The algorithm, the BPF
+runtime, the storage layer, the scoring engine, and the parity
+checks are all real and tested, but service integration (systemd
+units, alert delivery to syslog or SIEM, log rotation), baseline
+lifecycle management (refit cadence, drift detection across the
+weeks-to-months timescale of legitimate concept drift), performance
+benchmarking under fleet-realistic load, CO-RE-based portable BPF
+(one binary across heterogeneous kernel versions), per-PID rather
+than per-\texttt{comm} baseline keying, and self-protection against
+privileged tampering are all deliberately out of scope for this
+paper. The artifact establishes that the algorithm is correct, the
+runtime works on real Linux, and the cross-language parity is
+defensible. Productionizing it for a SOC environment would take
+several weeks of focused engineering and is outside the contribution
+this paper claims.
